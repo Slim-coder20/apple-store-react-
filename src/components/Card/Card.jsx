@@ -1,3 +1,5 @@
+import Button from "../Button/Button";
+
 export default function Card({ productName, price, image, ...props }) {
     return (
         <div className="w-1/3 rounded-3xl overflow-hidden relative">
@@ -7,9 +9,7 @@ export default function Card({ productName, price, image, ...props }) {
                 <div>À partir de {price} €</div>
             </div>
             <div className="absolute bottom-10 right-10 z-30">
-                <div className="rounded-full bg-blue-500 hover:bg-blue-400 duration-150 cursor-pointer text-white px-5 py-1.5">
-                    Acheter
-                </div>
+                <Button>Acheter</Button>
             </div>
             <img src={image} alt={productName} className="z-0" />
         </div>

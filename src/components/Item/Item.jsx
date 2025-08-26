@@ -4,7 +4,8 @@ import { CartContext } from "../../store/cart-context";
 
 export default function Item({ item }) {
     // Variable // 
-    const { updateQuantity } = useContext(CartContext); 
+    const { updateQuantity, deleteItem } = useContext(CartContext); 
+    
 
 
     return (
@@ -56,7 +57,7 @@ export default function Item({ item }) {
                             </div>
                             <div
                                 className="text-blue-500 mt-3 text-base inline-block hover:text-blue-800 cursor-pointer"
-                                onClick={() => {}}
+                                onClick={() => deleteItem(item.productName)}
                             >
                                 Supprimer
                             </div>

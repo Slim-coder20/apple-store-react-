@@ -82,6 +82,17 @@ function App() {
 
       }
     }, 
+    deleteItem:(productName) => {
+      const itemIndex = items.findIndex(
+        (itemInItems) => itemInItems.productName === productName, 
+
+      );
+      if(itemIndex !== -1){
+        const newItems = [...items]; 
+        newItems.splice(itemIndex, 1); 
+        setItems(newItems); 
+      }
+    }
   }
   return (
     <CartContext.Provider value={ contextValue}>

@@ -135,20 +135,23 @@ export default function Home() {
                             {/* Card */}
                             <Card
                                 productName="iPhone 15 Pro"
-                                price="1 229"
-                                image="assets/items/iphone.jpeg"
+                                price="1229"
+                                image="/assets/items/iphone.jpeg"
+                                cartImage="/assets/items/iphone15pro.png"
                             />
                             {/* Card */}
                             <Card
                                 productName="Apple Watch 9"
                                 price="449"
-                                image="assets/items/applewatch.jpeg"
+                                image="/assets/items/applewatch.jpeg"
+                                cartImage="/assets/items/applewatch9.png"
                             />
                             {/* Card */}
                             <Card
                                 productName="MacBook Pro"
-                                price="1 999"
-                                image="assets/items/macbook.jpeg"
+                                price="1999"
+                                image="/assets/items/macbook.jpeg"
+                                cartImage="/assets/items/macbookpro.png"
                             />
                         </div>
                     </section>

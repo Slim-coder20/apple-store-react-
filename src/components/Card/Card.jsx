@@ -1,6 +1,12 @@
 import Button from "../Button/Button";
 
-export default function Card({ productName, price, image, ...props }) {
+export default function Card({
+    productName,
+    price,
+    image,
+    cartImage,
+    ...props
+}) {
     return (
         <div className="w-1/3 rounded-3xl overflow-hidden relative">
             <div className="absolute left-10 top-10 right-0 z-30">

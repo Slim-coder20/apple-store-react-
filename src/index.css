@@ -11,8 +11,9 @@ body {
 
 @font-face {
     font-family: "SF Display";
-    font-weight: bold;
-    src: url("./assets/fonts/SFDisplay/SFUIDisplay-Bold.otf") format("opentype");
+    font-weight: light;
+    src: url("./assets/fonts/SFDisplay/SFUIDisplay-Light.otf")
+        format("opentype");
 }
 
 @font-face {

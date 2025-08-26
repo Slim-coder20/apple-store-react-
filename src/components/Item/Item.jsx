@@ -1,23 +1,30 @@
-export default function Item(props) {
+import { readPrice } from "../../util/readPrice";
+
+export default function Item({ item }) {
     return (
-        <div className="border-t mt-10">
+        <div className="border-t mt-10" key={item.productName}>
             {/* <div className="text-center">
                         Aucun élément pour le moment
                     </div> */}
             <div className="p-10 flex gap-5">
                 {/* Photo */}
                 <div className="w-[25%]">
-                    <img src="/assets/iphone15pro.png" alt="iPhone 15 Pro" />
+                    <img src={item.cartImage} alt={item.productName} />
                 </div>
                 <div className="w-full">
                     {/* Details */}
                     <div className="flex justify-between gap-4 text-2xl w-full">
                         {/* Product */}
-                        <h2 className="font-semibold">iPhone 15 Pro</h2>
+                        <h2 className="font-semibold">{item.productName}</h2>
 
                         {/* Quantity */}
                         <div>
-                            <select name="quantity" className="bg-transparent">
+                            <select
+                                name="quantity"
+                                className="bg-transparent"
+                                defaultValue={item.quantity}
+                                onChange={() => {}}
+                            >
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -33,7 +40,7 @@ export default function Item(props) {
 
                         {/* Price */}
                         <div className="text-right w-[30%]">
-                            <h3 className="font-semibold">1 609,00 €</h3>
+                            <h3 className="font-semibold">{readPrice(0)} €</h3>
                             <div className="text-gray-500 text-sm">
                                 <div className="mb-1">
                                     Rémunération pour copie privée incluse de
@@ -41,7 +48,10 @@ export default function Item(props) {
                                 </div>
                                 <div>Dont éco-participation: 0,04 €</div>
                             </div>
-                            <div className="text-blue-500 mt-3 text-base inline-block hover:text-blue-800 cursor-pointer">
+                            <div
+                                className="text-blue-500 mt-3 text-base inline-block hover:text-blue-800 cursor-pointer"
+                                onClick={() => {}}
+                            >
                                 Supprimer
                             </div>
                         </div>
@@ -59,7 +69,7 @@ export default function Item(props) {
                             <div className="w-full flex justify-between">
                                 <div>
                                     <div className="text-[17px] font-semibold">
-                                        AppleCare+ pour iPhone 15 Pro
+                                        AppleCare+ pour {item.productName}
                                     </div>
                                     <div className="text-gray-500 text-sm">
                                         Inscription automatique avec votre
@@ -70,12 +80,9 @@ export default function Item(props) {
                                         d’assurance au taux applicable.
                                     </div>
                                 </div>
-                                <div>
+                                <div className="text-right">
                                     <div className="text-[17px] font-semibold">
-                                        229,00 €
-                                    </div>
-                                    <div className="text-blue-500 mt-3 text-base inline-block hover:text-blue-800 cursor-pointer">
-                                        Supprimer
+                                        Offert
                                     </div>
                                 </div>
                             </div>

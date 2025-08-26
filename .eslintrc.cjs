@@ -22,5 +22,6 @@ module.exports = {
     "no-unexpected-multiline": "off",
     "no-useless-escape": "off",
     "no-template-curly-in-string": "off",
+    "react/prop-types": "off",
   },
 };

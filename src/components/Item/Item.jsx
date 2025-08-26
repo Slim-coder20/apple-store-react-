@@ -40,7 +40,7 @@ export default function Item({ item }) {
 
                         {/* Price */}
                         <div className="text-right w-[30%]">
-                            <h3 className="font-semibold">{readPrice(0)} €</h3>
+                            <h3 className="font-semibold">{readPrice(item.price * item.quantity)} €</h3>
                             <div className="text-gray-500 text-sm">
                                 <div className="mb-1">
                                     Rémunération pour copie privée incluse de

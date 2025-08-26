@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import Main from "./layouts/Main";
 import { CartContext } from "./store/cart-context";
+import { useState } from "react"
 
 const Home = lazy(() => import("./pages/Home"));
 const Shop = lazy(() => import("./pages/Shop"));
@@ -33,8 +34,41 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
+  // States on va ajouter une state pour pouvoir ajouter des produits dans notre panier // 
+
+  const [ items, setItems ] = useState([]); 
+ 
+  // Variables // 
+  const contextValue = {
+    items,
+    addItem: (item) => {
+      // Check if item.productName  already : 
+      // On vérfie le produit existe déjàsi oui alors on va incrémenter la quantité
+      // Sinon on ajoutera la propriétée quantité // 
+      const itemIndex = items.findIndex(
+        itemInItems => itemInItems.productName === item.productName
+        
+      )
+      if(itemIndex !== -1){
+        if(items[itemIndex].quantity === 10 ) {
+          alert (
+            "Vous ne pouvez pas ajouter plus de 10 articles pour ce produit. "
+          ); 
+          return; 
+        }
+        const newItems = [...items]; 
+        newItems[itemIndex].quantity++; 
+        setItems(newItems); 
+        return; 
+      }
+
+      // Si le produit n'existe pas alors // 
+      setItems(prevItems => [...prevItems, {...item, quantity: 1}]); 
+      
+    }
+  }
   return (
-    <CartContext.Provider value={{ items: []}}>
+    <CartContext.Provider value={ contextValue}>
       <RouterProvider router={router} />
     </CartContext.Provider>
   );

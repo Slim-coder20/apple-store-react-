@@ -38,7 +38,7 @@ export default function Home() {
                                     />
                                 </div>
                                 <div>
-                                    <b>Besoin d'aide pour faire vos achats ?</b>
+                                    <b>Besoin d&aposaide pour faire vos achats ?</b>
                                     <div className="text-blue-500 cursor-pointer hover:underline">
                                         Contacter nos spécialistes
                                     </div>

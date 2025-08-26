@@ -65,7 +65,23 @@ function App() {
       // Si le produit n'existe pas alors // 
       setItems(prevItems => [...prevItems, {...item, quantity: 1}]); 
       
-    }
+    }, 
+    updateQuantity:(productName, quantity) => {
+      const itemIndex = items.findIndex(
+        (itemInItems) => itemInItems.productName === productName, 
+
+      );
+      if(itemIndex !== -1){
+        if(quantity > 10){
+          alert('Vous ne pouvez pas ajouter plus de 10 articles pour ce produit.')
+          return; 
+        }
+        const newItems =  [...items]; 
+        newItems[itemIndex].quantity = Number(quantity);
+        setItems(newItems); 
+
+      }
+    }, 
   }
   return (
     <CartContext.Provider value={ contextValue}>

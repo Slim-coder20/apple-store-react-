@@ -1,6 +1,12 @@
 import { readPrice } from "../../util/readPrice";
+import { useContext } from 'react'
+import { CartContext } from "../../store/cart-context";
 
 export default function Item({ item }) {
+    // Variable // 
+    const { updateQuantity } = useContext(CartContext); 
+
+
     return (
         <div className="border-t mt-10" key={item.productName}>
             {/* <div className="text-center">
@@ -23,7 +29,7 @@ export default function Item({ item }) {
                                 name="quantity"
                                 className="bg-transparent"
                                 defaultValue={item.quantity}
-                                onChange={() => {}}
+                                onChange={(e) => updateQuantity(item.productName, e.target.value )}
                             >
                                 <option value="1">1</option>
                                 <option value="2">2</option>

@@ -29,7 +29,7 @@ export default function Shop() {
                                 Votre panier est vide
                             </div>
                             <div className="mt-5">
-                                Vous n'avez pas encore choisi d'articles.
+                                Vous n&aposavez pas encore choisi d&aposarticles.
                             </div>
                             <div className="mt-5">
                                 <Link to="/">

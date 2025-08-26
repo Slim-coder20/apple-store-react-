@@ -2,27 +2,42 @@ import { Suspense, lazy } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import Main from "./layouts/Main";
+import { CartContext } from "./store/cart-context";
 
 const Home = lazy(() => import("./pages/Home"));
 const Shop = lazy(() => import("./pages/Shop"));
 
 const router = createBrowserRouter([
-    {
-        path: "/",
+  {
+    path: "/",
+    element: <Main />,
+    children: [
+      {
+        index: true,
         element: (
-            <Suspense>
-                <Main />
-            </Suspense>
+          <Suspense>
+            <Home />
+          </Suspense>
         ),
-        children: [
-            { index: true, element: <Home /> },
-            { path: "/shop", element: <Shop /> },
-        ],
-    },
+      },
+      {
+        path: "/shop",
+        element: (
+          <Suspense>
+            <Shop />
+          </Suspense>
+        ),
+      },
+    ],
+  },
 ]);
 
 function App() {
-    return <RouterProvider router={router} />;
+  return (
+    <CartContext.Provider value={{ items: []}}>
+      <RouterProvider router={router} />
+    </CartContext.Provider>
+  );
 }
 
 export default App;

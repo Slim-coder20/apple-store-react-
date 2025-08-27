@@ -45,9 +45,37 @@ function cartReducer(state, action) {
         items: [...state.items, { ...action.payload, quantity: 1 }],
       };
     }
-    default:
-      // Pour toute autre action, on retourne l'état inchangé
-      return state;
+    
+    case "UPDATE_QUANTITY": {
+        // Recherche si le produit existe déjà dans le panier
+      const itemIndex2 = state.items.findIndex(
+        (itemInItems) => itemInItems.productName === action.payload.productName
+      );
+      if(itemIndex2 != -1){
+        if(action.payload.quantity > 10 ) {
+          alert("Vous ne pouvez pas ajouter plus de de 10 articles pour ce produit.")
+          return state; 
+        }
+      }
+      const newItems = [...state.items];
+      newItems[itemIndex2].quantity = Number(action.payload.quantity); 
+      return {...state, items: newItems}; 
+      
+    return state; 
+    }
+    case "DELETE_ITEM":{
+        // Recherche si le produit existe déjà dans le panier
+      const itemIndex3 = state.items.findIndex(
+        (itemInItems) => itemInItems.productName === action.payload.productName
+      );
+      if(itemIndex3 !== 1){
+          const newItems = [...state.items]; 
+          newItems.splice(itemIndex3, 1)
+          return {...state, items: newItems}
+      }
+    }
+    return state; 
+  
   }
 }
 
@@ -63,6 +91,13 @@ export default function CartProvider({ children }) {
       // Fonction pour ajouter un produit au panier
       dispatch({ type: "ADD_ITEM", payload: item });
     },
+    updateQuantity: (productName, quantity) => {
+      dispatch({type:"UPDATE_QUANTITY", payload: {productName, quantity}}); 
+    },
+    deleteItem: (productName) => {
+      dispatch({type:"DELETE_ITEM", payload:{productName}}); 
+    }
+
     // updateQuantity et deleteItem peuvent être ajoutés ici si besoin
   };
 
